@@ -60,3 +60,4 @@ node('master')
         mail bcc: '', body: 'Unable to deploy into ProdServers', cc: '', from: '', replyTo: '', subject: 'Delivery failed', to: 'delevery@outlook.com'
       }
   }
+}
