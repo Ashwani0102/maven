@@ -28,7 +28,7 @@ node('built-in')
   {
     try
       {
-        sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/DeclarativePipeline/webapp/target/webapp.war ubuntu@172.31.31.15:/var/lib/tomcat8/webapps/testwebapp.war'
+        deploy adapters: [tomcat9(credentialsId: 'ef678331-066b-45af-a455-74c0f15673f8', path: '', url: 'http://172.31.37.161:8080')], contextPath: 'testscript', war: '**/*.war'
       }
     catch(Exception e3)
       {
@@ -41,7 +41,7 @@ node('built-in')
     try
       {
         git 'https://github.com/intelliqittrainings/FunctionalTesting.git'
-        sh label: '', script: 'java -jar /home/ubuntu/.jenkins/workspace/DeclarativePipeline/testing.jar'
+        sh 'java -jar /home/ubuntu/.jenkins/workspace/ScriptedPipeline2/testing.jar'
       }
     catch(Exception e4)
       {
@@ -53,7 +53,7 @@ node('built-in')
   {
     try
       {
-        sh label: '', script: 'scp /home/ubuntu/.jenkins/workspace/DeclarativePipeline/webapp/target/webapp.war ubuntu@172.31.26.41:/var/lib/tomcat8/webapps/prodwebapp.war' 
+        deploy adapters: [tomcat9(credentialsId: 'ef678331-066b-45af-a455-74c0f15673f8', path: '', url: 'http://172.31.40.146:8080')], contextPath: 'prodscript', war: '**/*.war' 
       }
     catch(Exception e5)
       {
